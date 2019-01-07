@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+// thanks for var-dumper-server cli bootstrap
+use Opgk\PopoGenerator\Command\GenerateCommand;
+use Symfony\Component\Console\Application;
+
+function includeIfExists(string $file): bool
+{
+    return file_exists($file) && include $file;
+}
+
+if (
+    !includeIfExists(__DIR__ . '/autoload.php') &&
+    !includeIfExists(__DIR__ . '/../vendor/autoload.php') &&
+    !includeIfExists(__DIR__ . '/../../../vendor/autoload.php')
+) {
+    fwrite(STDERR, 'Install dependencies using Composer.' . PHP_EOL);
+    exit(1);
+}
+
+if (!class_exists(Application::class)) {
+    fwrite(STDERR, 'You need the "symfony/console" component installed.' . PHP_EOL);
+    exit(1);
+}
+
+$app = new Application();
+
+$app->add($command = new GenerateCommand())
+    ->getApplication()
+    ->setDefaultCommand($command->getName(), true);
+
+$app->run();

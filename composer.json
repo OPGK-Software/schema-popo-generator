@@ -7,6 +7,7 @@
             "email": "ppawliczuk@opgksoftware.com"
         }
     ],
+    "bin": ["bin/popo-generator"],
     "autoload": {
         "psr-4": {
             "Opgk\\PopoGenerator\\": "src/"
@@ -21,7 +22,8 @@
     "require": {
         "nette/php-generator": "^3.2",
         "phpunit/phpunit": "^7.5",
-        "doctrine/inflector": "^1.3"
+        "doctrine/inflector": "^1.3",
+        "symfony/console": "^4.2"
     },
     "suggest": {
         "symfony/serializer-pack": "Use serialization with generated objects (see examples)"
