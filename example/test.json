@@ -1,0 +1,15 @@
+{
+  "id": 123,
+  "first_name": "Grzegorz",
+  "last_name": "Brzęczyszczykiewicz",
+  "subs": [
+    {
+      "id": 1,
+      "number": "bla"
+    },
+    {
+      "id": 2,
+      "number": "bla"
+    }
+  ]
+}
